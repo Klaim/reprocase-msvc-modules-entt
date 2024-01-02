@@ -6,6 +6,8 @@ export module xxx;
 
 export namespace xxx
 {
+    __symexport void func(){}
+
     struct X
     {
         entt::registry entities;
