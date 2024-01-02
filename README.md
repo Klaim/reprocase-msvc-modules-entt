@@ -1,5 +1,7 @@
 This is a repro-case for a bug with msvc modules.
 
+Reported to Visual Studio team: https://developercommunity.visualstudio.com/t/Same-member-function-using-noexcept-expr/10551687
+
 ## How To Reproduce
 
 To reproduce with Visual Studio 2022 (preview  or not) check the `.bat` scripts provided and change the msvc toolchain to match your VS install, then run them:
