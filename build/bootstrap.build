@@ -1,7 +1,0 @@
-project = mylib
-
-using version
-using config
-using test
-using install
-using dist

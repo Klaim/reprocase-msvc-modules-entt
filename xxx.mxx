@@ -1,0 +1,11 @@
+module;
+#include "someheader.hxx"
+
+export module xxx;
+
+export
+struct X
+{
+    Q<int> q;
+};
+

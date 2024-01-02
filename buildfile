@@ -1,5 +1,13 @@
-./: {*/ -build/} doc{README.md} manifest
+cxx.std = experimental
+cxx.features.modules = true
 
-# Don't install tests.
-#
-tests/: install = false
+using cxx
+
+./ : liba{success} 	: hxx{someheader} hxx{yyy} cxx{source_ok}
+./ : liba{failure} : hxx{someheader}mxx{xxx} cxx{source_fail}
+
+
+
+
+
+
