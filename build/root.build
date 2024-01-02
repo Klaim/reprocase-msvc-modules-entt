@@ -2,7 +2,9 @@
 #
 #cxx.internal.scope = current
 
-cxx.std = latest
+cxx.std = experimental
+cxx.features.modules = true
+cxx.features.symexport = true
 
 using cxx
 
@@ -10,6 +12,7 @@ hxx{*}: extension = hxx
 ixx{*}: extension = ixx
 txx{*}: extension = txx
 cxx{*}: extension = cxx
+mxx{*}: extension = mxx
 
 # The test target for cross-testing (running tests under Wine, etc).
 #

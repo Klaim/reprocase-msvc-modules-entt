@@ -2,9 +2,9 @@ intf_libs = # Interface dependencies.
 impl_libs = # Implementation dependencies.
 #import xxxx_libs += libhello%lib{hello}
 
-lib{mylib}: {hxx ixx txx cxx}{** -version} hxx{version} $impl_libs $intf_libs
+lib{mylib}: {hxx ixx txx cxx mxx}{** -version} mxx{version} $impl_libs $intf_libs
 
-hxx{version}: in{version} $src_root/manifest
+mxx{version}: in{version} $src_root/manifest
 
 # Build options.
 #
@@ -36,7 +36,7 @@ else
 # Install into the mylib/ subdirectory of, say, /usr/include/
 # recreating subdirectories.
 #
-{hxx ixx txx}{*}:
+{hxx ixx txx mxx}{*}:
 {
   install         = include/mylib/
   install.subdirs = true

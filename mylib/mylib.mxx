@@ -1,15 +1,15 @@
-#pragma once
-
+module;
 #include <iosfwd>
 #include <string>
 
-#include <mylib/export.hxx>
+export module mylib;
+export import :version;
 
-namespace mylib
+export namespace mylib
 {
   // Print a greeting for the specified name into the specified
   // stream. Throw std::invalid_argument if the name is empty.
   //
-  MYLIB_SYMEXPORT void
+  __symexport void
   say_hello (std::ostream&, const std::string& name);
 }
