@@ -1,0 +1,12 @@
+export module yyy;
+
+import xxx;
+
+export namespace yyy
+{
+    struct Y
+    {
+        xxx::X x;
+    };
+};
+

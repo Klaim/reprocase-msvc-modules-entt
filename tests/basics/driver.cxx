@@ -1,34 +1,9 @@
-#include <sstream>
-#include <stdexcept>
 
-import mylib;
-
-#undef NDEBUG
-#include <cassert>
+import yyy;
 
 int main ()
 {
-  using namespace std;
-  using namespace mylib;
 
-  // Basics.
-  //
-  {
-    ostringstream o;
-    say_hello (o, "World");
-    assert (o.str () == "Hello, World!\n");
-  }
 
-  // Empty name.
-  //
-  try
-  {
-    ostringstream o;
-    say_hello (o, "");
-    assert (false);
-  }
-  catch (const invalid_argument& e)
-  {
-    assert (e.what () == string ("empty name"));
-  }
+  yyy::Y y;
 }
