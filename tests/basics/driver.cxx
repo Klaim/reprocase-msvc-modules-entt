@@ -1,9 +1,7 @@
 
-import yyy;
+// import yyy;
 
 int main ()
 {
-
-
-  yyy::Y y;
+  // yyy::Y y;
 }

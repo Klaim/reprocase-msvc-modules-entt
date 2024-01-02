@@ -1,5 +1,5 @@
 module;
-
+#include <entt/entt.hpp>
 
 export module xxx;
 
@@ -8,6 +8,6 @@ export namespace xxx
 {
     struct X
     {
-
+        entt::registry entities;
     };
 }
