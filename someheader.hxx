@@ -5,9 +5,6 @@
 template<class T>
 struct Q
 {
-    constexpr Q() = default;
-    constexpr Q(const Q&)
-        noexcept(std::is_nothrow_copy_constructible_v<T>) = default;
-
+    constexpr Q() noexcept(std::is_nothrow_copy_constructible_v<T>) = default;
 };
 
