@@ -10,4 +10,5 @@ export namespace xxx
     {
         entt::registry entities;
     };
+
 }
