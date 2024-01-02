@@ -1,0 +1,43 @@
+intf_libs = # Interface dependencies.
+impl_libs = # Implementation dependencies.
+#import xxxx_libs += libhello%lib{hello}
+
+lib{mylib}: {hxx ixx txx cxx}{** -version} hxx{version} $impl_libs $intf_libs
+
+hxx{version}: in{version} $src_root/manifest
+
+# Build options.
+#
+cxx.poptions =+ "-I$out_root" "-I$src_root"
+
+{hbmia obja}{*}: cxx.poptions += -DMYLIB_STATIC_BUILD
+{hbmis objs}{*}: cxx.poptions += -DMYLIB_SHARED_BUILD
+
+# Export options.
+#
+lib{mylib}:
+{
+  cxx.export.poptions = "-I$out_root" "-I$src_root"
+  cxx.export.libs = $intf_libs
+}
+
+liba{mylib}: cxx.export.poptions += -DMYLIB_STATIC
+libs{mylib}: cxx.export.poptions += -DMYLIB_SHARED
+
+# For pre-releases use the complete version to make sure they cannot
+# be used in place of another pre-release or the final version. See
+# the version module for details on the version.* variable values.
+#
+if $version.pre_release
+  lib{mylib}: bin.lib.version = "-$version.project_id"
+else
+  lib{mylib}: bin.lib.version = "-$version.major.$version.minor"
+
+# Install into the mylib/ subdirectory of, say, /usr/include/
+# recreating subdirectories.
+#
+{hxx ixx txx}{*}:
+{
+  install         = include/mylib/
+  install.subdirs = true
+}

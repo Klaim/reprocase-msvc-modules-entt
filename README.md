@@ -1,0 +1,3 @@
+# mylib
+
+C++ library
