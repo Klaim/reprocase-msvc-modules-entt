@@ -12,3 +12,4 @@ email: mjklaim@gmail.com
 depends: * build2 >= 0.16.0
 depends: * bpkg >= 0.16.0
 #depends: libhello ^1.0.0
+depends: entt == 3.12.2
