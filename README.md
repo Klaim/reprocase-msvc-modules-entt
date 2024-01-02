@@ -1,11 +1,15 @@
 This is a repro-case for a bug with msvc modules.
 
-To reproduce (check the `.bat` scripts and change the msvc toolchain to match yours):
-- `./repro-success.bat` or ( `b liba{success}` using `build2` ) : no problem
-    - clarification: compiled `source_ok.cxx` which includes `yyy.hxx` which provides the type `Y` which have a `Q<int>` as member, coming from `someheader.hxx`
-- `./repro-fail.bat` : build errors (with msvc)
-    - clarification: compiled `source_failure.cxx` which imports module `xxx` defined in `xxx.mxx` which provides the type `X` which have a `Q<int>` as member, coming from `someheader.hxx`
+## How To Reproduce
+
+To reproduce with Visual Studio 2022 (preview  or not) check the `.bat` scripts provided and change the msvc toolchain to match your VS install, then run them:
+- `./repro-success.bat` or ( `b liba{success}` using `build2` ) : no problem, as expected
+    - what it does: compiles `source_ok.cxx` which includes `yyy.hxx` which provides the type `Y` which have a `Q<int>` as member, coming from `someheader.hxx`
+- `./repro-fail.bat` or ( `b liba{success}` using `build2` ) : build errors (with msvc), unexpected
+    - what it does: compiles `source_failure.cxx` which imports module `xxx` defined in `xxx.mxx` which provides the type `X` which have a `Q<int>` as member, coming from `someheader.hxx`
 (note that `Y` and `X` are structurally exactly the same, the only difference is that one is defined and exported from a named module, the other is just in header).
+
+Here is what I observe (which is unexpected):
 ```
 $ ./repro-fail.bat
 
@@ -31,9 +35,10 @@ Important steps that reproduces the issue:
     };
     ```
 - When `Q<int>` is a member of a type which is defined in a module, then exported, then used somewhere -> error
+- If `X` was not exported and used, there would be no error.
 
 
-## Discovery Context
+## Additional Information
 
 This issue was first discovered in a `build2` project which uses only C++ modules for it's own code. The bat files were crafted using the verbose output from `build2` specifying the build commands. I did not remove or add any flag so far.
 The project in question builds with both `clang` (17 and 18-trunk versions) and `msvc` (preview) when using `build2`.
