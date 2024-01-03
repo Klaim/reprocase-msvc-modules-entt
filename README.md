@@ -7,7 +7,7 @@ Reported to Visual Studio team: https://developercommunity.visualstudio.com/t/Sa
 To reproduce with Visual Studio 2022 (preview  or not) check the `.bat` scripts provided and change the msvc toolchain to match your VS install, then run them:
 - `./repro-success.bat` or ( `b liba{success}` using `build2` ) : no problem, as expected
     - what it does: compiles `source_ok.cxx` which includes `yyy.hxx` which provides the type `Y` which have a `Q<int>` as member, coming from `someheader.hxx`
-- `./repro-fail.bat` or ( `b liba{success}` using `build2` ) : build errors (with msvc), unexpected
+- `./repro-fail.bat` or ( `b liba{failure}` using `build2` ) : build errors (with msvc), unexpected
     - what it does: compiles `source_failure.cxx` which imports module `xxx` defined in `xxx.mxx` which provides the type `X` which have a `Q<int>` as member, coming from `someheader.hxx`
 (note that `Y` and `X` are structurally exactly the same, the only difference is that one is defined and exported from a named module, the other is just in header).
 
